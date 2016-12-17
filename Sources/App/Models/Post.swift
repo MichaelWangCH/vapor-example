@@ -2,7 +2,7 @@ import Vapor
 import Fluent
 import Foundation
 
-final class Post: Model {
+struct Post: Model {
     var id: Node?
     var title: String
     var content: String
@@ -15,6 +15,7 @@ final class Post: Model {
         self.author = author
     }
 
+    // NodeInitializable
     init(node: Node, in context: Context) throws {
         id = try node.extract("id")
         title = try node.extract("title")
@@ -22,9 +23,10 @@ final class Post: Model {
         author = try node.extract("author")
     }
 
+    // NodeRepresentable
     func makeNode(context: Context) throws -> Node {
         return try Node(node: [
-            "id": id,
+            "id": UUID().uuidString.makeNode(),
             "title": title,
             "author": author,
             "content": content
