@@ -3,12 +3,14 @@ import HTTP
 
 final class PostController: ResourceRepresentable {
     func index(request: Request) throws -> ResponseRepresentable {
+        // get all the post objects from the database
         return try Post.all().makeNode().converted(to: JSON.self)
     }
 
     func create(request: Request) throws -> ResponseRepresentable {
         var post = try request.post()
         try post.save()
+
         return post
     }
 
@@ -18,12 +20,8 @@ final class PostController: ResourceRepresentable {
 
     func delete(request: Request, post: Post) throws -> ResponseRepresentable {
         try post.delete()
-        return JSON([:])
-    }
 
-    func clear(request: Request) throws -> ResponseRepresentable {
-        try Post.query().delete()
-        return JSON([])
+        return JSON([:])
     }
 
     func update(request: Request, post: Post) throws -> ResponseRepresentable {
@@ -31,12 +29,8 @@ final class PostController: ResourceRepresentable {
         var post = post
         post.content = new.content
         try post.save()
-        return post
-    }
 
-    func replace(request: Request, post: Post) throws -> ResponseRepresentable {
-        try post.delete()
-        return try create(request: request)
+        return post
     }
 
     func makeResource() -> Resource<Post> {
@@ -44,10 +38,8 @@ final class PostController: ResourceRepresentable {
             index: index,
             store: create,
             show: show,
-            replace: replace,
             modify: update,
-            destroy: delete,
-            clear: clear
+            destroy: delete
         )
     }
 }
