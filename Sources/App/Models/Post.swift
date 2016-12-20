@@ -7,6 +7,9 @@ struct Post: Model {
     var title: String
     var content: String
     var author: String
+
+    // used by fluent internally
+    var exists: Bool = false
     
     init(title: String, content: String, author: String) {
         self.id = UUID().uuidString.makeNode()
@@ -26,7 +29,7 @@ struct Post: Model {
     // NodeRepresentable
     func makeNode(context: Context) throws -> Node {
         return try Node(node: [
-            "id": UUID().uuidString.makeNode(),
+            "id": id,
             "title": title,
             "author": author,
             "content": content

@@ -1,5 +1,6 @@
 import Vapor
 import HTTP
+import Foundation
 
 final class PostController: ResourceRepresentable {
     func index(request: Request) throws -> ResponseRepresentable {
@@ -9,6 +10,8 @@ final class PostController: ResourceRepresentable {
 
     func create(request: Request) throws -> ResponseRepresentable {
         var post = try request.post()
+        post.id = UUID().uuidString.makeNode()
+
         try post.save()
 
         return post
