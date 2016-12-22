@@ -5,6 +5,7 @@ let drop = Droplet()
 
 // Vapor runs migrations/preparations for models
 drop.preparations.append(Post.self)
+drop.preparations.append(Blog.self)
 
 do {
     // add VaporPostgreSQL provider, this will bind the data to the database and the models automatically down the line.
@@ -16,6 +17,7 @@ do {
 // Creating a route group
 drop.group("api") { api in
     api.resource("posts", PostController())
+    api.resource("blogs", BlogController())
 }
 
 drop.run()

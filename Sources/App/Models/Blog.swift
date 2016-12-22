@@ -5,11 +5,11 @@ import Fluent
 struct Blog: Model {
     var id: Node?
     var title: String
-    var description: String
+    var description: String?
 
     var exists: Bool = false
 
-    init(title: String, description: String) {
+    init(title: String, description: String?) {
         self.id = UUID().uuidString.makeNode()
         self.title = title
         self.description = description
