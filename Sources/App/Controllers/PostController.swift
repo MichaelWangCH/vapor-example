@@ -49,7 +49,11 @@ final class PostController: ResourceRepresentable {
 
 extension Request {
     func post() throws -> Post {
-        guard let json = json else { throw Abort.badRequest }
+        guard let json = json,
+              let _ = json["title"]?.string,
+              let _ = json["content"]?.string,
+              let _ = json["author"]?.string else { throw Abort.badRequest }
+
         return try Post(node: json)
     }
 }
