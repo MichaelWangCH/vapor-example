@@ -2,8 +2,20 @@
 <html>
 <head>
     #import("head")
+    <title>My Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/styles/normalize.css">
+    <link rel="stylesheet" href="/styles/skeleton.css">
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">"
 </head>
     <body>
+        <div class="container">
+            <div class="row">
+                <div class="u-full-width">
+                    <h2>This is my blog</h2>
+                </div>
+            </div>
+        </div>
         #import("body")
     </body>
 </html>

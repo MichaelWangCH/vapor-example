@@ -8,6 +8,15 @@ final class PostController: ResourceRepresentable {
         return try Post.all().makeNode().converted(to: JSON.self)
     }
 
+    func indexView(request: Request) throws -> ResponseRepresentable {
+        let posts = try Post.all().makeNode()
+        let parameters = try Node(node: [
+                "posts": posts
+            ])
+
+        return try drop.view.make("index", parameters)
+    }
+
     func create(request: Request) throws -> ResponseRepresentable {
         var post = try request.post()
         post.id = UUID().uuidString.makeNode()

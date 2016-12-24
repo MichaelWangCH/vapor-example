@@ -20,4 +20,6 @@ drop.group("api") { api in
     api.resource("blogs", BlogController())
 }
 
+drop.get("posts", handler: PostController().indexView)
+
 drop.run()
