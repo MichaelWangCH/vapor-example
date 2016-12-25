@@ -1,16 +1,16 @@
 #extend("base")
 
 #export("body") {
-    #loop(posts, "post") {
-        <div class="row">
-            <div class="three columns">
-            </div>
-            <div class="three columns">
-                <h5><span>#(post.title)</span></h5>
-            </div>
-            <div class="three columns">
-                <p>#(post.author)</p>
-            </div>
-        </div>
-    }
+  #loop(posts, "post") {
+    <div class="row">
+      <div class="six columns">
+        <h5><span>#(post.title)</span></h5>
+      </div>
+      <div class="three columns">
+        <p><span>#(post.author)</span></p>
+      </div>
+      <div class="three columns">
+      </div>
+     </div>
+  }
 }
