@@ -1,6 +1,32 @@
 #extend("base")
 
 #export("body") {
+  <div class="row">
+    <div class="u-full-width">
+      <h4>Add New Post</h4>
+    </div>
+  </div>
+
+  <form action="/posts" method="post">
+    <div class="row">
+      <div class="six columns">
+        <label>Title</label>
+        <input name="title" class="u-full-width" placeholder="enter title..." />
+      </div>
+      <div class="six columns">
+        <label>Author</label>
+        <input name="author" class="u-full-width" placeholder="enter author..." />
+      </div>
+    </div>
+    <div class="row">
+      <div class="twelves columns">
+        <label>Content</label>
+        <input name="content" class="u-full-width" placeholder="enter content..." />
+        <input class="button-primary" type="submit" value="Save Post">
+      </div>
+    </div>
+  </form>
+
   #loop(posts, "post") {
     <div class="row">
       <div class="six columns">
