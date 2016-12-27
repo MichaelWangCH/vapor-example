@@ -36,6 +36,9 @@
         <p><span>#(post.author)</span></p>
       </div>
       <div class="three columns">
+        <form action="/posts/#(post.id)/delete" method="post">
+          <input type="submit" value="Delete"/>
+        </form>
       </div>
      </div>
   }

@@ -27,7 +27,13 @@ final class PostController: ResourceRepresentable {
     var post = Post(title: title, content: content, author: author)
     try post.save()
 
-    return Response.init(redirect: "/posts")
+    return Response(redirect: "/posts")
+  }
+
+  func deletePost(request: Request, post: Post) throws -> ResponseRepresentable {
+    try post.delete()
+
+    return Response(redirect: "/posts")
   }
 
     func create(request: Request) throws -> ResponseRepresentable {
