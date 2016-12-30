@@ -2,3 +2,20 @@ createdb blog;
 
 psql blog;
 
+CREATE TABLE posts (
+ id     	    serial       PRIMARY KEY,
+ uuid		      uuid         NOT NULL,
+ title        varchar(200) NOT NULL,
+ markdown     text		     NOT NULL,
+ html         text         NOT NULL,
+ status       varchar(10)  NOT NULL,
+ language     varchar(10)  NOT NULL,
+ created_at   timestamp    NOT NULL,
+ created_by   integer      NOT NULL,
+ updated_at   timestamp    NOT NULL,
+ updated_by   integer      NOT NULL,
+ published_at timestamp,
+ published_by integer,
+ author       integer      NOT NULL,
+ url          varchar(200) NOT NULL
+);
