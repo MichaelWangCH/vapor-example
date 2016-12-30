@@ -1,0 +1,4 @@
+createdb blog;
+
+psql blog;
+
