@@ -4997,6 +4997,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C6BA4751E162C9F004B38D5 /* postgresql */ = {isa = PBXFileReference; lastKnownFileType = text; path = postgresql; sourceTree = "<group>"; };
 		OBJ_10 /* Bool+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+String.swift"; sourceTree = "<group>"; };
 		OBJ_100 /* bio_lib.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = bio_lib.c; sourceTree = "<group>"; };
 		OBJ_1000 /* FrameSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameSerializer.swift; sourceTree = "<group>"; };
@@ -8666,6 +8667,7 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
+				2C6BA4751E162C9F004B38D5 /* postgresql */,
 				2C0B6F981E0CF7EC008379CF /* Dependencies */,
 				OBJ_7 /* Sources */,
 				OBJ_1359 /* Tests */,

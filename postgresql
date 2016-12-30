@@ -1,0 +1,10 @@
+createdb blogdemo;
+
+psql blogdemo;
+
+CREATE TABLE posts (
+  id        uuid PRIMARY KEY,
+  title     varchar(200) NOT NULL,
+  content  text NOT NULL,
+  author    varchar(100) NOT NULL
+);
