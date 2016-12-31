@@ -3,13 +3,23 @@ import Fluent
 import Foundation
 
 extension Date {
-  static func fromTimestamp(_ timestamp: Int) -> Date {
-    return Date(timeIntervalSince1970: TimeInterval(timestamp))
+  static var dateFormatter: DateFormatter {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+
+    return dateFormatter
   }
 
-  static func optionalFromTimestamp(_ timestamp: Int?) -> Date? {
-    guard let stamp = timestamp else { return nil }
-    return fromTimestamp(stamp)
+  static func fromTimestamp(_ timestamp: String?) -> Date? {
+    guard let timestamp = timestamp else {
+      return nil
+    }
+
+    return dateFormatter.date(from: timestamp)
+  }
+
+  func toString() -> String? {
+    return Date.dateFormatter.string(from: self)
   }
 }
 
@@ -22,21 +32,22 @@ struct Post: Model {
   var status: String
   var language: String
 
-  var createdAt: Date
+  var createdAt: Date?
   var createdBy: Int
-  var updatedAt: Date
+  var updatedAt: Date?
   var updatedBy: Int
   var publishedAt: Date?
   var publishedBy: Int?
-  var author: String
+  var author: Int
   var url: String
 
   // used by fluent internally
   var exists: Bool = false
 
+
   init(title: String, markdown: String, html: String, status: String, language: String,
        createdAt: Date, createdBy: Int, updatedAt: Date, updatedBy: Int,
-       publishedAt: Date?, publishedBy: Int?, author: String, url: String) {
+       publishedAt: Date?, publishedBy: Int?, author: Int, url: String) {
     self.id = nil
     self.uuid = UUID().uuidString
     self.title = title
@@ -65,12 +76,12 @@ struct Post: Model {
     status = try node.extract("status")
     language = try node.extract("language")
 
-    createdAt = try node.extract("createdAt", transform: Date.fromTimestamp)
-    createdBy = try node.extract("createdBy")
-    updatedAt = try node.extract("updatedAt", transform: Date.fromTimestamp)
-    updatedBy = try node.extract("updatedBy")
-    publishedAt = try node.extract("publishedAt", transform: Date.optionalFromTimestamp)
-    publishedBy = try node.extract("publishedBy")
+    createdAt = try node.extract("created_at", transform: Date.fromTimestamp)
+    createdBy = try node.extract("created_by")
+    updatedAt = try node.extract("updated_at", transform: Date.fromTimestamp)
+    updatedBy = try node.extract("updated_by")
+    publishedAt = try node.extract("published_at", transform: Date.fromTimestamp)
+    publishedBy = try node.extract("published_by")
     author = try node.extract("author")
     url = try node.extract("url")
   }
@@ -85,12 +96,12 @@ struct Post: Model {
       "html": html,
       "status": status,
       "language": language,
-      "createdAt": createdAt.timeIntervalSince1970,
-      "createdBy": createdBy,
-      "updatedAt": updatedAt.timeIntervalSince1970,
-      "updatedBy": updatedBy,
-      "publishedAt": publishedAt?.timeIntervalSince1970,
-      "publishedBy": publishedBy,
+      "created_at": createdAt?.toString(),
+      "created_by": createdBy,
+      "updated_at": updatedAt?.toString(),
+      "updated_by": updatedBy,
+      "published_at": publishedAt?.toString(),
+      "published_by": publishedBy,
       "author": author,
       "url": url
       ])
