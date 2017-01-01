@@ -14,26 +14,30 @@
         <input name="title" class="u-full-width" placeholder="enter title..." />
       </div>
       <div class="six columns">
-        <label>Author</label>
-        <input name="author" class="u-full-width" placeholder="enter author..." />
       </div>
     </div>
     <div class="row">
-      <div class="twelves columns">
-        <label>Content</label>
-        <input name="content" class="u-full-width" placeholder="enter content..." />
-        <input class="button-primary" type="submit" value="Save Post">
+      <div class="u-full-width">
+        <label>Markdown</label>
       </div>
+    </div>
+    <textarea name="markdown" class="u-full-width" placeholder="enter markdown..."></textarea>
+    <div class="row">
+      <div class="u-full-width">
+        <label>HTML</label>
+      </div>
+    </div>
+    <textarea name="html" class="u-full-width" readonly="readonly"/></textarea>
+    <div class="row">
+      <div class="u-full-width">
+      <input class="button-primary" type="submit" value="Save Post">
     </div>
   </form>
 
   #loop(posts, "post") {
     <div class="row">
-      <div class="six columns">
+      <div class="nine columns">
         <h5><span>#(post.title)</span></h5>
-      </div>
-      <div class="three columns">
-        <p><span>#(post.author)</span></p>
       </div>
       <div class="three columns">
         <form action="/posts/#(post.id)/delete" method="post">
