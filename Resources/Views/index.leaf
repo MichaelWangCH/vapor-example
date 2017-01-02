@@ -21,13 +21,15 @@
         <label>Markdown</label>
       </div>
     </div>
-    <textarea name="markdown" class="u-full-width" placeholder="enter markdown..."></textarea>
+    <textarea id="markdownEditor" class="u-full-width" placeholder="enter markdown..." oninput="convertMarkdown(this)"></textarea>
     <div class="row">
       <div class="u-full-width">
         <label>HTML</label>
       </div>
     </div>
-    <textarea name="html" class="u-full-width" readonly="readonly"/></textarea>
+    <div class="row">
+      <div id="preview" class="u-full-width"></div>
+    </div>
     <div class="row">
       <div class="u-full-width">
       <input class="button-primary" type="submit" value="Save Post">
