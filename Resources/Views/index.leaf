@@ -21,7 +21,8 @@
         <label>Markdown</label>
       </div>
     </div>
-    <textarea id="markdownEditor" class="u-full-width" placeholder="enter markdown..." oninput="convertMarkdown(this)"></textarea>
+    <textarea id="markdownEditor" name="markdown" class="u-full-width" placeholder="enter markdown..." oninput="convertMarkdown(this)"></textarea>
+    <input type="hidden" id="hiddenPreview" name="html"/>
     <div class="row">
       <div class="u-full-width">
         <label>HTML</label>

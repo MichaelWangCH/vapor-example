@@ -2,27 +2,6 @@ import Vapor
 import Fluent
 import Foundation
 
-extension Date {
-  static var dateFormatter: DateFormatter {
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-
-    return dateFormatter
-  }
-
-  static func fromTimestamp(_ timestamp: String?) -> Date? {
-    guard let timestamp = timestamp else {
-      return nil
-    }
-
-    return dateFormatter.date(from: timestamp)
-  }
-
-  func toString() -> String? {
-    return Date.dateFormatter.string(from: self)
-  }
-}
-
 struct Post: Model {
   var id: Node?
   var uuid: String
@@ -43,7 +22,6 @@ struct Post: Model {
 
   // used by fluent internally
   var exists: Bool = false
-
 
   init(title: String, markdown: String, html: String, status: String, language: String,
        createdAt: Date, createdBy: Int, updatedAt: Date, updatedBy: Int,
@@ -115,5 +93,26 @@ extension Post: Preparation {
 
   static func revert(_ database: Database) throws {
     //
+  }
+}
+
+extension Date {
+  static var dateFormatter: DateFormatter {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+
+    return dateFormatter
+  }
+
+  static func fromTimestamp(_ timestamp: String?) -> Date? {
+    guard let timestamp = timestamp else {
+      return nil
+    }
+
+    return dateFormatter.date(from: timestamp)
+  }
+
+  func toString() -> String? {
+    return Date.dateFormatter.string(from: self)
   }
 }

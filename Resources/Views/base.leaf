@@ -12,6 +12,7 @@
       function convertMarkdown(editor) {
         var converter = new showdown.Converter();
         var text = editor.value;
+        document.getElementById('hiddenPreview').value = converter.makeHtml(text);
         document.getElementById('preview').innerHTML = converter.makeHtml(text);
       }
     </script>
