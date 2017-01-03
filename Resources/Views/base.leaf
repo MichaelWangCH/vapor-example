@@ -15,6 +15,20 @@
         document.getElementById('hiddenPreview').value = converter.makeHtml(text);
         document.getElementById('preview').innerHTML = converter.makeHtml(text);
       }
+
+      <!-- https://github.com/github/fetch -->
+      function addPost() {
+        var form = document.querySelector('form')
+
+        fetch('/posts', {
+          method: 'POST',
+          body: new FormData(form)
+        }).then(function(response) {
+          console.log('saved post:', response.status)
+        }).catch(function(ex) {
+          console.log('failed to save post:', ex)
+        })
+      }
     </script>
 </head>
     <body>

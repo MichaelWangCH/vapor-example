@@ -33,7 +33,7 @@
     </div>
     <div class="row">
       <div class="u-full-width">
-      <input class="button-primary" type="submit" value="Save Post">
+      <input class="button-primary" type="button" value="Save Post" onclick="addPost()">
     </div>
   </form>
 
