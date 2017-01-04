@@ -17,6 +17,10 @@ final class PostController: ResourceRepresentable {
     return try drop.view.make("index", parameters)
   }
 
+  func addPostView(request: Request) throws -> ResponseRepresentable {
+    return try drop.view.make("addpost")
+  }
+
   func addPost(request: Request) throws -> ResponseRepresentable {
     guard let title = request.data["title"]?.string,
       let markdown = request.data["markdown"]?.string,

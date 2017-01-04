@@ -1,0 +1,39 @@
+#extend("base")
+
+#export("body") {
+<div class="row">
+  <div class="u-full-width">
+    <h4>Add New Post</h4>
+  </div>
+</div>
+
+<form action="/posts" method="post">
+  <div class="row">
+    <div class="six columns">
+      <label>Title</label>
+      <input name="title" class="u-full-width" placeholder="enter title..." />
+    </div>
+    <div class="six columns">
+    </div>
+  </div>
+  <div class="row">
+    <div class="u-full-width">
+      <label>Markdown</label>
+    </div>
+  </div>
+  <textarea id="markdownEditor" name="markdown" class="u-full-width" placeholder="enter markdown..." oninput="convertMarkdown(this)"></textarea>
+  <input type="hidden" id="hiddenPreview" name="html"/>
+  <div class="row">
+    <div class="u-full-width">
+      <label>HTML</label>
+    </div>
+  </div>
+  <div class="row">
+    <div id="preview" class="u-full-width"></div>
+  </div>
+  <div class="row">
+    <div class="u-full-width">
+      <input class="button-primary" type="button" value="Save Post" onclick="addPost()">
+        </div>
+    </form>
+}
