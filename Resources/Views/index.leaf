@@ -4,13 +4,12 @@
   #loop(posts, "post") {
     <div class="row">
       <div class="nine columns">
-        <h5><span>#(post.title)</span></h5>
+        <h5>#(post.title)</h5>
+        <h6>#(post.published_at)</h6>
+        <h6>#(post.markdown)</h6>
       </div>
       <div class="three columns">
-        <form action="/posts/#(post.id)/delete" method="post">
-          <input type="submit" value="Delete"/>
-        </form>
       </div>
-     </div>
+    </div>
   }
 }

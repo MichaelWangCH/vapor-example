@@ -35,7 +35,7 @@
         <div class="container">
             <div class="row">
                 <div class="u-full-width">
-                    <h2>This is my blog</h2>
+                    <h2>My blog</h2>
                 </div>
             </div>
             #import("body")
