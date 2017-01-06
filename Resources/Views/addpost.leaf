@@ -23,6 +23,25 @@
   </div>
   <div class="row">
     <div class="u-full-width">
+      <label for="url">Post URL</label>
+      <input name="url" type="text" class="u-full-width"/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="one-half column">
+      <label for="publishDate">Publish Date</label>
+      <input name="publishDate" type="text" class="u-full-width"/>
+    </div>
+    <div class="one-half column">
+      <label for="author">Status</label>
+      <select class="u-full-width" id="author">
+        <option value="Option 1">Draft</option>
+        <option value="Option 2">Published</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="u-full-width">
       <label>Markdown</label>
     </div>
   </div>
