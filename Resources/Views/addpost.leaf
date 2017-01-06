@@ -10,10 +10,15 @@
 <form action="/posts" method="post">
   <div class="row">
     <div class="six columns">
-      <label>Title</label>
-      <input name="title" class="u-full-width" placeholder="enter title..." />
+      <label for="title">Title</label>
+      <input name="title" type="text" class="u-full-width" placeholder="enter title..." />
     </div>
     <div class="six columns">
+      <label for="author">Author</label>
+      <select class="u-full-width" id="author">
+        <option value="Option 1">Tom</option>
+        <option value="Option 2">Tony</option>
+      </select>
     </div>
   </div>
   <div class="row">
