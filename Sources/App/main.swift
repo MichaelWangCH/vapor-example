@@ -8,21 +8,19 @@ drop.preparations.append(Post.self)
 drop.preparations.append(Blog.self)
 
 do {
-    // add VaporPostgreSQL provider, this will bind the data to the database and the models automatically down the line.
-    try drop.addProvider(VaporPostgreSQL.Provider.self)
+  // add VaporPostgreSQL provider, this will bind the data to the database and the models automatically down the line.
+  try drop.addProvider(VaporPostgreSQL.Provider.self)
 } catch {
-    assertionFailure("Error adding provider: \(error)")
+  assertionFailure("Error adding provider: \(error)")
 }
 
 // Creating a route group
 drop.group("api") { api in
-    api.resource("posts", PostController())
-    api.resource("blogs", BlogController())
+  api.resource("blogs", BlogController())
 }
 
 drop.get("/", handler: PostController().indexView)
-drop.get("addpost", handler: PostController().addPostView)
-drop.post("posts", handler: PostController().addPost)
-drop.post("posts", Post.self, "delete", handler: PostController().deletePost)
+drop.resource("posts", PostController())
+drop.get("addpost", handler: PostController().addPost)
 
 drop.run()

@@ -1,0 +1,13 @@
+#extend("base")
+
+#export("body") {
+  <div class="row">
+    <div class="nine columns">
+      <h5>#(post.title)</h5>
+      <h6>#(post.published_at)</h6>
+      <h6>#(post.markdown)</h6>
+    </div>
+    <div class="three columns">
+    </div>
+  </div>
+}

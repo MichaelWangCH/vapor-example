@@ -17,11 +17,17 @@ final class PostController: ResourceRepresentable {
     return try drop.view.make("index", parameters)
   }
 
-  func addPostView(request: Request) throws -> ResponseRepresentable {
+  func addPost(request: Request) throws -> ResponseRepresentable {
     return try drop.view.make("addpost")
   }
 
-  func addPost(request: Request) throws -> ResponseRepresentable {
+  func deletePost(request: Request, post: Post) throws -> ResponseRepresentable {
+    try post.delete()
+
+    return Response(redirect: "/posts")
+  }
+
+  func create(request: Request) throws -> ResponseRepresentable {
     guard let title = request.data["title"]?.string,
       let markdown = request.data["markdown"]?.string,
       let html = request.data["html"]?.string else {
@@ -34,21 +40,12 @@ final class PostController: ResourceRepresentable {
     return Response(redirect: "/posts")
   }
 
-  func deletePost(request: Request, post: Post) throws -> ResponseRepresentable {
-    try post.delete()
-
-    return Response(redirect: "/posts")
-  }
-
-  func create(request: Request) throws -> ResponseRepresentable {
-    var post = try request.post()
-    try post.save()
-
-    return post
-  }
-
   func show(request: Request, post: Post) throws -> ResponseRepresentable {
-    return post
+    let parameters = try Node(node: [
+      "post": post
+      ])
+
+    return try drop.view.make("post", parameters)
   }
 
   func delete(request: Request, post: Post) throws -> ResponseRepresentable {
@@ -68,7 +65,7 @@ final class PostController: ResourceRepresentable {
 
   func makeResource() -> Resource<Post> {
     return Resource(
-      index: index,
+      index: indexView,
       store: create,
       show: show,
       modify: update,
