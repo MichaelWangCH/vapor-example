@@ -1,0 +1,25 @@
+#extend("base")
+
+#export("body") {
+<form action="/users" method="post">
+  <div class="row">
+    <div class="six columns">
+      <label for="username">User Name</label>
+      <input name="username" type="text" class="u-full-width"/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="six columns">
+      <label for="password">Password</label>
+      <input name="password" type="text" class="u-full-width"/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="u-full-width">
+      <input class="button-primary" type="submit" value="Login">
+        </div>
+    <div>
+</form>
+}

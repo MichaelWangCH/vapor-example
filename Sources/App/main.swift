@@ -22,5 +22,6 @@ drop.group("api") { api in
 drop.get("/", handler: PostController().indexView)
 drop.resource("posts", PostController())
 drop.get("addpost", handler: PostController().addPost)
+drop.resource("users", UserController())
 
 drop.run()
