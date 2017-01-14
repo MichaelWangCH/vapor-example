@@ -19,3 +19,11 @@ CREATE TABLE posts (
  author       integer      NOT NULL,
  url          varchar(200) NOT NULL
 );
+
+CREATE TABLE users (
+  id     	    serial       PRIMARY KEY,
+  uuid		    uuid         NOT NULL,
+  user_name   varchar(200) NOT NULL,
+  email       varchar(200) NOT NULL,
+  password    varchar(200) NOT NULL
+);
