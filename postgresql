@@ -23,7 +23,7 @@ CREATE TABLE posts (
 CREATE TABLE users (
   id     	    serial       PRIMARY KEY,
   uuid		    uuid         NOT NULL,
-  userName    varchar(200) NOT NULL,
+  user_name   varchar(200) NOT NULL,
   email       varchar(200) NOT NULL,
   password    varchar(200) NOT NULL
 );

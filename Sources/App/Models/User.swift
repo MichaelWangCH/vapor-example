@@ -18,7 +18,7 @@ struct User: Model {
 
   init(node: Node, in context: Context) throws {
     id = try node.extract("id")
-    userName = try node.extract("userName")
+    userName = try node.extract("user_name")
     email = try node.extract("email")
     password = try node.extract("password")
   }
@@ -26,7 +26,7 @@ struct User: Model {
   func makeNode(context: Context) throws -> Node {
     return try Node(node: [
       "id": id,
-      "userName": userName,
+      "user_name": userName,
       "email": email,
       "password": password,
       ])
