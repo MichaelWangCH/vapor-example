@@ -12,6 +12,8 @@ class UserController: ResourceRepresentable {
     if let user = try User.query().filter("user_name", userName).all().first {
       let encryptedPassword = try drop.hash.make(password)
       if user.password == encryptedPassword {
+        try request.session().data["user"] = Node.string(userName)
+
         return Response(redirect: "/posts")
       } else {
         return "Login failed"

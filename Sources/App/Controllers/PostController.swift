@@ -9,6 +9,11 @@ final class PostController: ResourceRepresentable {
   }
 
   func indexView(request: Request) throws -> ResponseRepresentable {
+    let session = try request.session()
+    guard let _ = session.data["user"]?.string else {
+      return Response(redirect: "/")
+    }
+
     let posts = try Post.all().makeNode()
     let parameters = try Node(node: [
       "posts": posts
